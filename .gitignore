@@ -1,2 +1,4 @@
-./asset-download
+asset-download
 **/node_modules
+*/dist
+*/.env
