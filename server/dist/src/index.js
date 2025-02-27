@@ -13,6 +13,7 @@ const authMiddleware_1 = require("./middleware/authMiddleware");
 /* ROUTE IMPORT */
 const tenantRoutes_1 = __importDefault(require("./routes/tenantRoutes"));
 const managerRoutes_1 = __importDefault(require("./routes/managerRoutes"));
+const propertyRoutes_1 = __importDefault(require("./routes/propertyRoutes"));
 /* CONFIGURATION */
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -26,6 +27,7 @@ app.use((0, cors_1.default)());
 app.get("/", (req, res) => {
     res.send("server is live!");
 });
+app.use("/properties", propertyRoutes_1.default);
 app.use("/tenants", (0, authMiddleware_1.authMiddleware)(["tenant"]), tenantRoutes_1.default);
 app.use("/managers", (0, authMiddleware_1.authMiddleware)(["manager"]), managerRoutes_1.default);
 /* SERVER */
