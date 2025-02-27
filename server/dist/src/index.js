@@ -14,6 +14,7 @@ const authMiddleware_1 = require("./middleware/authMiddleware");
 const tenantRoutes_1 = __importDefault(require("./routes/tenantRoutes"));
 const managerRoutes_1 = __importDefault(require("./routes/managerRoutes"));
 const propertyRoutes_1 = __importDefault(require("./routes/propertyRoutes"));
+const leaseRoutes_1 = __importDefault(require("./routes/leaseRoutes"));
 /* CONFIGURATION */
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
     res.send("server is live!");
 });
 app.use("/properties", propertyRoutes_1.default);
+app.use("/leases", leaseRoutes_1.default);
 app.use("/tenants", (0, authMiddleware_1.authMiddleware)(["tenant"]), tenantRoutes_1.default);
 app.use("/managers", (0, authMiddleware_1.authMiddleware)(["manager"]), managerRoutes_1.default);
 /* SERVER */
